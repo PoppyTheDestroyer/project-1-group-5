@@ -14,21 +14,26 @@
 >source for the majority of the data our site will pull.
 
 ## Mock Up
-![Site Mockup](/images/mockup.png)
+![Site Mockup](/assets/images/mockup.png)
 
 ## APIs to be Used
 1. Yelp!
 2. BreweryDB
 
 ## Rough Breakdown of Tasks
-
-### Front-end
 * Justin is a design wizard
-* 
-
-### Back-end
 * Test APIs for CORS
-* 
-
+* Search Box (Auto complete or naw)
+* API Keys/Authentication
+* Local storage
+* To dump or not to dump (Proxy Server or naw)
+* Website layout
+* Mobile responsiveness
+* Presentation Planning
+* Make sure deploy to GitHub
+* AJAX
+* Repeating Elements
+* User input validation
+* Age Authorization pop-up
 
 
