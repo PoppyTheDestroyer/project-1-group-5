@@ -14,7 +14,7 @@
 >source for the majority of the data our site will pull.
 
 ## Mock Up
-![Site Mockup](/images/mockup.png)
+![Site Mockup](/assets/images/mockup.png)
 
 ## APIs to be Used
 1. Yelp!
