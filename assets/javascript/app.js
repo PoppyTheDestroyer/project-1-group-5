@@ -4680,7 +4680,7 @@ var queryURLbeers = "http://api.brewerydb.com/v2/brewery/tfZkDt/beers?key=35eff5
   $.ajax({
     url: queryURLbeers,
     method: "GET"
-  })
+  });
     // After the data comes back from the API
     .done(function(response) {
       // Storing an array of results in the results variable
@@ -4694,13 +4694,13 @@ var queryURLbeers = "http://api.brewerydb.com/v2/brewery/tfZkDt/beers?key=35eff5
         $("#beer-list").append("<div class = 'col-4'><img id = 'beer-"+i+"' src = 'http://via.placeholder.com/100+'><br><p>"+results[i].name+"</p></div>");
 
       }
-    })
+    });
 
     //getting the brewery info
     $.ajax({
       url: queryURLbrewery,
       method: "GET"
-    })
+    });
     // After the data comes back from the API
     .done(function(response) {
       var breweryresult = response.data;
@@ -4709,16 +4709,17 @@ var queryURLbeers = "http://api.brewerydb.com/v2/brewery/tfZkDt/beers?key=35eff5
       $("#beers-by-brewery").text("Beers Made By "+breweryresult.name);
       $("#brewery-img").html("<img src='"+breweryresult.images.squareMedium+"'>");
       $("#brewery-desc").html("<p>"+breweryresult.description+"<br>Website: "+breweryresult.website+"</p>");
-    })
+    });
 
 
  // AJAX get beers
   $.ajax({
     url: queryURLradius,
     method: "GET"
-  })
+  });
     // After the data comes back from the API
     .done(function(response) {
       // Storing an array of results in the results variable
       var breweryradius = response.data;
       console.log(breweryradius);
+  };
