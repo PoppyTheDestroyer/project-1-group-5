@@ -4680,7 +4680,7 @@ var queryURLbeers = "http://api.brewerydb.com/v2/brewery/tfZkDt/beers?key=35eff5
   $.ajax({
     url: queryURLbeers,
     method: "GET"
-  });
+  })
     // After the data comes back from the API
     .done(function(response) {
       // Storing an array of results in the results variable
@@ -4700,7 +4700,7 @@ var queryURLbeers = "http://api.brewerydb.com/v2/brewery/tfZkDt/beers?key=35eff5
     $.ajax({
       url: queryURLbrewery,
       method: "GET"
-    });
+    })
     // After the data comes back from the API
     .done(function(response) {
       var breweryresult = response.data;
@@ -4716,7 +4716,7 @@ var queryURLbeers = "http://api.brewerydb.com/v2/brewery/tfZkDt/beers?key=35eff5
   $.ajax({
     url: queryURLradius,
     method: "GET"
-  });
+  })
     // After the data comes back from the API
     .done(function(response) {
       // Storing an array of results in the results variable
