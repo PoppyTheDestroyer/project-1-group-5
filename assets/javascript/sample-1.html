@@ -74,7 +74,9 @@
             };
 
         }
-
+//So I think the problem is that the details about the 
+//place are local rather than global. 
+//I've got bits in pieces of data I need in various local places all over this mofo.
         function callback(results, status) {
             if (status === google.maps.places.PlacesServiceStatus.OK) {
                 var marker = new google.maps.Marker({
