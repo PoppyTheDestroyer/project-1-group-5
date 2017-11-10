@@ -84,8 +84,6 @@
                         location: results[0].geometry.location
                     }
                 })
-                var service = google.maps.places.PlacesService(map);
-                service.nearbySearch(request, callback);
                 var infowindow = new google.maps.InfoWindow({
                     place: {
                         placeId: results[0].place_id,
