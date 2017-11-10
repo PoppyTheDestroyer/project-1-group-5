@@ -4663,38 +4663,20 @@ function findObjectByKey(array, key, value) {
     return null;
 }
 
-
-
-// var jqxhr = $.getJSON( "assets/javascript/zipcodes.json", function(data) {
-//   console.log(data);
-//   console.log( "success" );
-// })
-//   .done(function() {
-//     console.log( "second success" );
-//   })
-//   .fail(function() {
-//     console.log( "error" );
-//   })
-//   .always(function() {
-//     console.log( "complete" );
-//   });
- 
-// Perform other work here ...
 var obj = findObjectByKey(zips, "ZIP", 77006);
 
+var latitude = zips[i]["LAT"];
+var longitude = zips[i]["LNG"];
 console.log(obj);
  
-// Set another completion function for the request above
 
 
-
-
-//var queryURLbrewery = "http://api.brewerydb.com/v2/brewery/tfZkDt?key=35eff59e52d0da84d5ba657eab46cc81";
-var queryURLbrewery = "http://api.brewerydb.com/v2/search/geo/point?lat=35.772096&lng=-78.638614&key=35eff59e52d0da84d5ba657eab46cc81";
+var queryURLbrewery = "http://api.brewerydb.com/v2/brewery/tfZkDt?key=35eff59e52d0da84d5ba657eab46cc81";
+var queryURLradius = "http://api.brewerydb.com/v2/search/geo/point?lat="+latitude+"&lng="+longitude+"&key=35eff59e52d0da84d5ba657eab46cc81";
 
 var queryURLbeers = "http://api.brewerydb.com/v2/brewery/tfZkDt/beers?key=35eff59e52d0da84d5ba657eab46cc81";
 
-  // Performing our AJAX GET request
+  // AJAX get beers
   $.ajax({
     url: queryURLbeers,
     method: "GET"
@@ -4714,16 +4696,29 @@ var queryURLbeers = "http://api.brewerydb.com/v2/brewery/tfZkDt/beers?key=35eff5
       }
     })
 
+    //getting the brewery info
     $.ajax({
       url: queryURLbrewery,
       method: "GET"
     })
     // After the data comes back from the API
     .done(function(response) {
-      var results = response.data;
-      console.log(results);
-      $("#brewery-name").text(results.name);
-      $("#beers-by-brewery").text("Beers Made By "+results.name);
-      $("#brewery-img").html("<img src='"+results.images.squareMedium+"'>");
-      $("#brewery-desc").html("<p>"+results.description+"<br>Website: "+results.website+"</p>");
+      var breweryresult = response.data;
+      console.log(breweryresult);
+      $("#brewery-name").text(breweryresult.name);
+      $("#beers-by-brewery").text("Beers Made By "+breweryresult.name);
+      $("#brewery-img").html("<img src='"+breweryresult.images.squareMedium+"'>");
+      $("#brewery-desc").html("<p>"+breweryresult.description+"<br>Website: "+breweryresult.website+"</p>");
     })
+
+
+ // AJAX get beers
+  $.ajax({
+    url: queryURLradius,
+    method: "GET"
+  })
+    // After the data comes back from the API
+    .done(function(response) {
+      // Storing an array of results in the results variable
+      var breweryradius = response.data;
+      console.log(breweryradius);
