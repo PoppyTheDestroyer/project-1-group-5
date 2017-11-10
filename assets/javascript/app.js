@@ -28,7 +28,7 @@ var jqxhr = $.getJSON( "assets/javascript/zipcodes.json", function(data) {
   });
  
 // Perform other work here ...
-var obj = findObjectByKey(jqxhr, 'ZIP', 77006);
+var obj = findObjectByKey(jqxhr, 'ZIP', '77006');
 
 console.log(obj);
  
