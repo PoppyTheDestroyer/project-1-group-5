@@ -74,10 +74,12 @@
             };
 
         }
-//So I think the problem is that the details about the 
-//place are local rather than global. 
-//I've got bits in pieces of data I need in various local places all over this mofo.
+        //So I think the problem is that the details about the 
+        //place are local rather than global. 
+        //I've got bits in pieces of data I need in various local places all over this mofo.
         function callback(results, status) {
+            service = new google.maps.places.PlacesService(map);
+            var details = google.maps.places.PlaceResult;
             if (status === google.maps.places.PlacesServiceStatus.OK) {
                 var marker = new google.maps.Marker({
                     map: map,
@@ -86,17 +88,19 @@
                         location: results[0].geometry.location
                     }
                 })
-                var infowindow = new google.maps.InfoWindow({
+                console.log(marker);
+                var infoWindow = new google.maps.InfoWindow({
                     place: {
                         placeId: results[0].place_id,
-                        location: results[0].geometry.location,
-                        name: results[0].name
+                        name: results[0].name,
+                        address: results[0].formatted_address
                     }
                 })
+                console.log(infoWindow);
                 google.maps.event.addListener(marker, 'click', function () {
-                    infowindow.setContent('<div><strong>' + this.place.name + '</strong><br>' +
-                        this.place.formatted_address + '</div>');
-                    infowindow.open(map, this)
+                    infoWindow.setContent('<div><strong>' + infoWindow.place.name + '</strong><br>' +
+                        infoWindow.place.address + '</div>');
+                    infoWindow.open(map, this)
                 });
                 console.log("butts");
             }
