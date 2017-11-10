@@ -13,7 +13,8 @@ function findObjectByKey(array, key, value) {
     return null;
 }
 
-var jqxhr = $.getJSON( "assets/javascript/zipcodes.json", function() {
+var jqxhr = $.getJSON( "assets/javascript/zipcodes.json", function(data) {
+  console.log(data);
   console.log( "success" );
 })
   .done(function() {
