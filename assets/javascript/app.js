@@ -4722,4 +4722,4 @@ var queryURLbeers = "http://api.brewerydb.com/v2/brewery/tfZkDt/beers?key=35eff5
       // Storing an array of results in the results variable
       var breweryradius = response.data;
       console.log(breweryradius);
-  };
+  });
