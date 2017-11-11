@@ -37,7 +37,7 @@
         function initMap() {
             map = new google.maps.Map(document.getElementById("map"), {
                 center: { lat: 29.7680, lng: -95.3980 },
-                zoom: 14
+                zoom: 15
             });
             console.log("farts");
 
@@ -58,7 +58,7 @@
                     var request = {
                         location: map.getCenter(),
                         radius: "500",
-                        query: "Carter & Cooley"
+                        query: "bar"
                     };
                     console.log("poop")
                     var service = new google.maps.places.PlacesService(map);
