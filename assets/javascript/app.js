@@ -4680,14 +4680,56 @@ console.log(latitude);
  
 
 //gets brewery
-var queryURLbrewery = "http://api.brewerydb.com/v2/brewery/tfZkDt?key=35eff59e52d0da84d5ba657eab46cc81";
+var queryURLrandom = "http://api.brewerydb.com/v2/brewery/random?key=35eff59e52d0da84d5ba657eab46cc81";
+
+var queryUrlBrewery = "";
+
+var queryUrlBreweryLoc = "";
 //gets breweries in radius
 var queryURLradius = "http://api.brewerydb.com/v2/search/geo/point?lat="+latitude+"&lng="+longitude+"&key=35eff59e52d0da84d5ba657eab46cc81";
-//gets beers at brewery
-var queryURLbeers = "http://api.brewerydb.com/v2/brewery/tfZkDt/beers?key=35eff59e52d0da84d5ba657eab46cc81";
+
+var queryURLbeers = "";
 
     $(document).ready(function() {
   // AJAX get beers
+//gets beers at brewery
+var breweryId = "";
+
+
+    //getting the brewery info
+    $.ajax({
+      url: queryURLrandom,
+      method: "GET"
+    }).done(function(response) {
+      var randomResult = response.data;
+      console.log(randomResult);
+
+
+
+     breweryId = randomResult.id;
+
+    queryUrlBreweryLoc = "http://api.brewerydb.com/v2/brewery/"+breweryId+"/locations?key=35eff59e52d0da84d5ba657eab46cc81";
+
+    queryUrlBrewery = "http://api.brewerydb.com/v2/brewery/"+breweryId+"?key=35eff59e52d0da84d5ba657eab46cc81";
+
+
+     $.ajax({
+      url: queryUrlBrewery,
+      method: "GET"
+    }).done(function(response) {
+      var breweryResult = response.data;
+
+      console.log(breweryResult);
+      $("#brewery-name").text(randomResult.name);
+      $("#beers-by-brewery").text("Beers Made By "+randomResult.name);
+      $("#brewery-img").html("<img src='"+breweryResult.images.squareMedium+"'>");
+      $("#brewery-desc").html("<p>"+breweryResult.description+"<br>Website: "+breweryResult.website+"</p>");
+
+
+
+  console.log(breweryId);
+
+  queryURLbeers = "http://api.brewerydb.com/v2/brewery/"+breweryId+"/beers?key=35eff59e52d0da84d5ba657eab46cc81";
   $.ajax({
     url: queryURLbeers,
     method: "GET"
@@ -4706,40 +4748,37 @@ var queryURLbeers = "http://api.brewerydb.com/v2/brewery/tfZkDt/beers?key=35eff5
       }
     });
 
-    //getting the brewery info
-    $.ajax({
-      url: queryURLbrewery,
-      method: "GET"
-    }).done(function(response) {
-      var breweryresult = response.data;
-      console.log(breweryresult);
-      $("#brewery-name").text(breweryresult.name);
-      $("#beers-by-brewery").text("Beers Made By "+breweryresult.name);
-      $("#brewery-img").html("<img src='"+breweryresult.images.squareMedium+"'>");
-      $("#brewery-desc").html("<p>"+breweryresult.description+"<br>Website: "+breweryresult.website+"</p>");
+
+
     });
 
+ });
 
- // AJAX get beers
-  $.ajax({
-    url: queryURLradius,
-    method: "GET"
-  }).done(function(response) {
-      // Storing an array of results in the results variable
-      var breweryradius = response.data;
-      console.log(breweryradius);
-      for (var i = 0; i < 10; i+=1){
-        if (breweryradius != undefined){
-          $("#brewery-list").append("<li id = 'brewery-"+i+"'>"+breweryradius[i].brewery.name+"</li>");
-
-                $("#brewery"+i+"").on("click", function() {
-
-        // ... we trigger an alert.
-        alert("I've been clicked!"+this.id+"");
-      });
-        }
-      }
   });
+
+
+ // // AJAX get beers
+ //  $.ajax({
+ //    url: queryURLradius,
+ //    method: "GET"
+ //  }).done(function(response) {
+ //      // Storing an array of results in the results variable
+ //      var breweryradius = response.data;
+ //      console.log(breweryradius);
+ //      for (var i = 0; i < 10; i+=1){
+ //        if (breweryradius != undefined){
+ //          $("#brewery-list").append("<li id = 'brewery-"+i+"'>"+breweryradius[i].brewery.name+"</li>");
+
+ //                $("#brewery"+i+"").on("click", function() {
+
+ //        // ... we trigger an alert.
+ //        alert("I've been clicked!"+this.id+"");
+ //      });
+ //        }
+ //      }
+ //  });
+
+
 
 
 
@@ -4747,4 +4786,4 @@ var queryURLbeers = "http://api.brewerydb.com/v2/brewery/tfZkDt/beers?key=35eff5
       // Whenever it is clicked...
 
 
-    });
+  
