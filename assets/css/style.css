@@ -39,46 +39,66 @@ body {
     text-align: center;
     font-family: 'Oswald', sans-serif;
 	position: relative;
+	color: #FFFFFF;
 	
 }
+
 .main-w3layouts {
+	color: #FFFFFF;
     position: absolute;
     top: 0;
     left: 21%;
     width: 55%;
 }
 
+#header {
+	padding-top: 10px;
+}
+
+#beers-by-brewery {
+	margin-top: 25px;
+	margin-bottom: 25px;
+	font-size: 200;}
+
+#brewery-name {
+	margin: auto;
+	margin-top: 25px;
+	margin-bottom: 25px;
+	font-size: 50px;
+}
+
+#brewery-desc {
+	margin: auto;
+	height: 200px;
+	width: 600px;
+	margin-top: 25px;
+	font-size: 25px;
+	overflow-y: auto;
+	overflow-x: hidden;
+}
+
 #map {
-	height: 70%;
-	width: 70%
+	margin: auto;
+	height: 300px;
+	width: 600px;
+	margin-bottom: 25px;
+	margin-top: 15px
 }
 
-/* ---- particles.js container ---- */
-
-#particles-js{
-  width: 100%;
-  background-image: url('');
-  background-size: cover;
-  background-position: 50% 50%;
-  background-repeat: no-repeat;
-}
-canvas.particles-js-canvas-el {
-    height: 789px!important;
-}
 /*--//parallax-js--*/
 .main-agile h2 {
     font-size: 5em;
     text-align: center;
     text-transform: uppercase;
     letter-spacing: 4px;
-    color: #fff;
+    color: #FFFFFF;
     font-weight: 600;
     text-shadow: 1px 1px 2px #000;
 }
 .w3layouts-newsletter h2 {
     font-size: 3em;
     letter-spacing: 2px;
-    color: cornflowerblue;
+    color: #FFFFFF;
 }
 .w3layouts-newsletter p {
     font-size: 1.3em;
@@ -87,13 +107,13 @@ canvas.particles-js-canvas-el {
     width: 70%;
     margin: 1.5em auto;
     line-height: 1.6;
-    color: #fff;
+    color: #FFFFFF;
 }
 .main-agile {
     margin: 5em 0 7em;
 }
 .main-agile p {
-    color: #fff;
+    color: #FFFFFF;
     width: 59%;
     text-align: center;
     margin: 2em auto 1.5em;
@@ -108,7 +128,7 @@ canvas.particles-js-canvas-el {
 	position: relative;
 }
 .main-w3layouts h1 {
-    color: #fff;
+    color: #FFFFFF;
     font-size: 4em;
     letter-spacing: 3px;
     margin: .55em 0;
@@ -118,66 +138,12 @@ canvas.particles-js-canvas-el {
     width: 75%;
     margin: 2em auto 0;
 }
-.w3layouts-newsletter input[type="email"] {
-    padding: .8em 1em;
-    width: 65%;
-    letter-spacing: 1px;
-    font-size: 1em;
-    color: #fff;
-    outline: none;
-    border: 4px double #ff0c9e;
-    background: none;
-    float: left;
-}
-.w3layouts-newsletter input[type="submit"] {
-    color: #fff;
-    font-size: .9em;
-    border: none;
-    background:#f5d12b;
-    padding: 1.25em 3.5em;
-    outline: none;
-    cursor: pointer;
-    transition: 0.5s all;
-    -webkit-transition: 0.5s all;
-    -moz-transition: 0.5s all;
-    -ms-transition: 0.5s all;
-    -o-transition: 0.5s all;
-    float: left;
-    letter-spacing: 1px;
-	transition:0.5s all;
-	-webkit-transition:0.5s all;
-	-moz-transition:0.5s all;
-	-ms-transition:0.5s all;
-	-o-transition:0.5s all;
-}
-.w3layouts-newsletter input[type="submit"]:hover {
-    background: #ff0c9e;
-	transition:0.5s all;
-	-webkit-transition:0.5s all;
-	-moz-transition:0.5s all;
-	-ms-transition:0.5s all;
-	-o-transition:0.5s all;
-}
 .w3layouts-newsletter img {
     width: 25%;
 }
 .w3layouts-newsletter {
     padding: 3em 1em 4em;
 }
-/*--//footer--*/
-.footer-w3l p {
-    font-size: 1em;
-    letter-spacing: 3px;
-    padding: 2em 0;
-	color:#fff;
-}
-.footer-w3l p a{
-	color:#fff;
-}
-.footer-w3l p a:hover{
-	text-decoration:underline;
-}
-/*--//footer--*/
 
 /*--responsive--*/
 @media(max-width: 1680px){
