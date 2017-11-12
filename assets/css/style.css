@@ -73,6 +73,8 @@ body {
 	width: 600px;
 	margin-top: 25px;
 	font-size: 25px;
+	overflow-y: auto;
+	overflow-x: hidden;
 }
 
 #map {
