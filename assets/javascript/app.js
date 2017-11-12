@@ -1,6 +1,6 @@
 jQuery.ajaxPrefilter(function (options) {
   if (options.crossDomain && jQuery.support.cors) {
-      options.url = 'https://cors-anywhere.herokuapp.com/' + options.url;
+    options.url = 'https://cors-anywhere.herokuapp.com/' + options.url;
   }
 });
 
@@ -29,66 +29,66 @@ $(document).ready(function () {
 
   //getting the brewery info
   $.ajax({
-      url: queryURLrandom,
-      method: "GET"
+    url: queryURLrandom,
+    method: "GET"
   }).done(function (response) {
-      var randomResult = response.data;
-      console.log(randomResult);
+    var randomResult = response.data;
+    console.log(randomResult);
 
 
 
-      breweryId = randomResult.id;
+    breweryId = randomResult.id;
 
-      queryUrlBreweryLoc = "http://api.brewerydb.com/v2/brewery/" + breweryId + "/locations?key=35eff59e52d0da84d5ba657eab46cc81";
+    queryUrlBreweryLoc = "http://api.brewerydb.com/v2/brewery/" + breweryId + "/locations?key=35eff59e52d0da84d5ba657eab46cc81";
 
-      queryUrlBrewery = "http://api.brewerydb.com/v2/brewery/" + breweryId + "?key=35eff59e52d0da84d5ba657eab46cc81";
+    queryUrlBrewery = "http://api.brewerydb.com/v2/brewery/" + breweryId + "?key=35eff59e52d0da84d5ba657eab46cc81";
 
+
+    $.ajax({
+      url: queryUrlBrewery,
+      method: "GET"
+    }).done(function (response) {
+      var breweryResult = response.data;
+
+      console.log(breweryResult);
+      $("#brewery-name").text(randomResult.name);
+      $("#beers-by-brewery").text("Beers Made By " + randomResult.name);
+      $("#brewery-img").html("<img src='" + breweryResult.images.squareMedium + "'>");
+      $("#brewery-desc").html("<p>" + breweryResult.description + "<br>Website: " + breweryResult.website + "</p>");
 
       $.ajax({
-          url: queryUrlBrewery,
-          method: "GET"
+        url: queryUrlBreweryLoc,
+        method: "GET"
       }).done(function (response) {
-          var breweryResult = response.data;
-
-          console.log(breweryResult);
-          $("#brewery-name").text(randomResult.name);
-          $("#beers-by-brewery").text("Beers Made By " + randomResult.name);
-          $("#brewery-img").html("<img src='" + breweryResult.images.squareMedium + "'>");
-          $("#brewery-desc").html("<p>" + breweryResult.description + "<br>Website: " + breweryResult.website + "</p>");
-
-          $.ajax({
-              url: queryUrlBreweryLoc,
-              method: "GET"
-          }).done(function (response) {
-              var breweryLocResult = response.data;
-              brewLat = breweryLocResult.lat;
-              brewLng = breweryLocResult.lng;
-
-          });
-          console.log(breweryId);
-
-          queryURLbeers = "http://api.brewerydb.com/v2/brewery/" + breweryId + "/beers?key=35eff59e52d0da84d5ba657eab46cc81";
-          $.ajax({
-              url: queryURLbeers,
-              method: "GET"
-          })
-              // After the data comes back from the API
-              .done(function (response) {
-                  // Storing an array of results in the results variable
-                  var results = response.data;
-                  console.log(results);
-
-                  for (var i = 0; i < results.length; i += 1) {
-                      if (results[i].labels != undefined) {
-                          $("#beer-list").append("<div class = 'col-4'><img id = 'beer-" + i + "' src = '" + results[i].labels.medium + "'><br><p>" + results[i].name + "</p></div>");
-                      }
-                      $("#beer-list").append("<div class = 'col-4'><img id = 'beer-" + i + "' src = 'http://via.placeholder.com/100+'><br><p>" + results[i].name + "</p></div>");
-                  }
-              });
-
-
+        var breweryLocResult = response.data;
+        brewLat = breweryLocResult.lat;
+        brewLng = breweryLocResult.lng;
 
       });
+      console.log(breweryId);
+
+      queryURLbeers = "http://api.brewerydb.com/v2/brewery/" + breweryId + "/beers?key=35eff59e52d0da84d5ba657eab46cc81";
+      $.ajax({
+        url: queryURLbeers,
+        method: "GET"
+      })
+        // After the data comes back from the API
+        .done(function (response) {
+          // Storing an array of results in the results variable
+          var results = response.data;
+          console.log(results);
+
+          for (var i = 0; i < results.length; i += 1) {
+            if (results[i].labels != undefined) {
+              $("#beer-list").append("<div class = 'col-4'><img id = 'beer-" + i + "' src = '" + results[i].labels.medium + "'><br><p>" + results[i].name + "</p></div>");
+            }
+            $("#beer-list").append("<div class = 'col-4'><img id = 'beer-" + i + "' src = 'http://via.placeholder.com/100+'><br><p>" + results[i].name + "</p></div>");
+          }
+        });
+
+
+
+    });
 
   });
 
@@ -102,8 +102,8 @@ var request = {
 //Begin function by defining the map with initial coordinates.
 function initMap() {
   map = new google.maps.Map(document.getElementById("map"), {
-      center: { lat: brewLat, lng: brewLng },
-      zoom: 12
+    center: { lat: brewLat, lng: brewLng },
+    zoom: 12
   });
   console.log("farts");
   var service = new google.maps.places.PlacesService(map);
@@ -143,28 +143,28 @@ function callback(results, status) {
   service = new google.maps.places.PlacesService(map);
   var details = google.maps.places.PlaceResult;
   if (status === google.maps.places.PlacesServiceStatus.OK) {
-      var marker = new google.maps.Marker({
-          map: map,
-          place: {
-              placeId: results[0].place_id,
-              location: results[0].geometry.location
-          }
-      })
-      console.log(marker);
-      var infoWindow = new google.maps.InfoWindow({
-          place: {
-              placeId: results[0].place_id,
-              name: results[0].name,
-              address: results[0].formatted_address
-          }
-      })
-      console.log(infoWindow);
-      google.maps.event.addListener(marker, 'click', function () {
-          infoWindow.setContent('<div><strong>' + infoWindow.place.name + '</strong><br>' +
-              infoWindow.place.address + '</div>');
-          infoWindow.open(map, this)
-      });
-      console.log("butts");
+    var marker = new google.maps.Marker({
+      map: map,
+      place: {
+        placeId: results[0].place_id,
+        location: results[0].geometry.location
+      }
+    })
+    console.log(marker);
+    var infoWindow = new google.maps.InfoWindow({
+      place: {
+        placeId: results[0].place_id,
+        name: results[0].name,
+        address: results[0].formatted_address
+      }
+    })
+    console.log(infoWindow);
+    google.maps.event.addListener(marker, 'click', function () {
+      infoWindow.setContent('<div><strong>' + infoWindow.place.name + '</strong><br>' +
+        infoWindow.place.address + '</div>');
+      infoWindow.open(map, this)
+    });
+    console.log("butts");
   }
 }
 
@@ -174,8 +174,8 @@ console.log("nacho cheeeeeeeeese")
 function handleLocationError(browserHasGeolocation, infoWindow, pos) {
   infoWindow.setPosition(pos);
   infoWindow.setContent(browserHasGeolocation ?
-      'Error: The Geolocation service failed.' :
-      'Error: Your browser doesn\'t support geolocation.');
+    'Error: The Geolocation service failed.' :
+    'Error: Your browser doesn\'t support geolocation.');
   infoWindow.open(map);
 }
 
@@ -188,8 +188,8 @@ var request = {
 //Begin function by defining the map with initial coordinates.
 function initMap() {
   map = new google.maps.Map(document.getElementById("map"), {
-      center: { lat: brewLat, lng: brewLng },
-      zoom: 12
+    center: { lat: brewLat, lng: brewLng },
+    zoom: 12
   });
   console.log("farts");
   var service = new google.maps.places.PlacesService(map);
@@ -229,28 +229,28 @@ function callback(results, status) {
   service = new google.maps.places.PlacesService(map);
   var details = google.maps.places.PlaceResult;
   if (status === google.maps.places.PlacesServiceStatus.OK) {
-      var marker = new google.maps.Marker({
-          map: map,
-          place: {
-              placeId: results[0].place_id,
-              location: results[0].geometry.location
-          }
-      })
-      console.log(marker);
-      var infoWindow = new google.maps.InfoWindow({
-          place: {
-              placeId: results[0].place_id,
-              name: results[0].name,
-              address: results[0].formatted_address
-          }
-      })
-      console.log(infoWindow);
-      google.maps.event.addListener(marker, 'click', function () {
-          infoWindow.setContent('<div><strong>' + infoWindow.place.name + '</strong><br>' +
-              infoWindow.place.address + '</div>');
-          infoWindow.open(map, this)
-      });
-      console.log("butts");
+    var marker = new google.maps.Marker({
+      map: map,
+      place: {
+        placeId: results[0].place_id,
+        location: results[0].geometry.location
+      }
+    })
+    console.log(marker);
+    var infoWindow = new google.maps.InfoWindow({
+      place: {
+        placeId: results[0].place_id,
+        name: results[0].name,
+        address: results[0].formatted_address
+      }
+    })
+    console.log(infoWindow);
+    google.maps.event.addListener(marker, 'click', function () {
+      infoWindow.setContent('<div><strong>' + infoWindow.place.name + '</strong><br>' +
+        infoWindow.place.address + '</div>');
+      infoWindow.open(map, this)
+    });
+    console.log("butts");
   }
 }
 
@@ -260,8 +260,8 @@ console.log("nacho cheeeeeeeeese")
 function handleLocationError(browserHasGeolocation, infoWindow, pos) {
   infoWindow.setPosition(pos);
   infoWindow.setContent(browserHasGeolocation ?
-      'Error: The Geolocation service failed.' :
-      'Error: Your browser doesn\'t support geolocation.');
+    'Error: The Geolocation service failed.' :
+    'Error: Your browser doesn\'t support geolocation.');
   infoWindow.open(map);
 }
 
@@ -270,4 +270,4 @@ function handleLocationError(browserHasGeolocation, infoWindow, pos) {
 // Whenever it is clicked...
 
 
-});
+
