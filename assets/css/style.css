@@ -41,7 +41,7 @@ li {
 	color: #fff;
 }
 
-h3,p, {
+h3 {
 	color: #FFF;
 	padding: 20px 0px;
 }
@@ -69,13 +69,16 @@ a {
 #beers-by-brewery {
 	margin-top: 25px;
 	margin-bottom: 25px;
-	font-size: 200;}
+	font-size: 200;
+	color: #fff;
+	}
 
 #brewery-name {
 	margin: auto;
 	margin-top: 25px;
 	margin-bottom: 25px;
 	font-size: 50px;
+	color: #fff;
 }
 
 #brewery-desc {
@@ -86,6 +89,7 @@ a {
 	font-size: 25px;
 	overflow-y: auto;
 	overflow-x: hidden;
+	color: #fff;
 }
 
 #map {
