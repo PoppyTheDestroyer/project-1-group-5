@@ -97,7 +97,7 @@
                     //if the status is verified, supply info
                     if (brewResult.status === "verified") {
                     placeWindow.setContent("<div><strong>" + placeWindow.place.name + "</strong><br>" +
-                            placeWindow.place.address + "<br>" + brewResult.website + "<br>" + brewResult.description +"</div>");
+                            placeWindow.place.address + "<br>" + "<p>Website: <a style='color:#5286ec;' href='"+brewResult.website+"'>"+brewResult.name + "</a></p>" + "<br>" + brewResult.description +"</div>");
                     //if it is not, return this message
                     } else {placeWindow.setContent("We're sorry, but the information about the brewery you've selected is not available at this time. We will update this listing as soon as the information becomes available to us.")
                     }
