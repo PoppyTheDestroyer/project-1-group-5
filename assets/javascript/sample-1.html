@@ -93,7 +93,7 @@
                 service = new google.maps.places.PlacesService(map);
                 var details = google.maps.places.PlaceResult;
                 if (status === google.maps.places.PlacesServiceStatus.OK) {
-                    for (var i = 0; i < 10; i += 1) {
+                    for (var i = 0; i < 20; i += 1) {
                         createMarker(results[i]);
                         console.log('HERE:'+results[i].name)
                         //useBoth(brewResult[i]);
@@ -132,8 +132,12 @@
                     console.log("brewResult " + brewResult.name);
                     console.log("Response: " + response.data[0].name)
                     console.log("Website: " + brewResult.website);
+                    if (brewResult.status === "verified") {
                     placeWindow.setContent("<div><strong>" + placeWindow.place.name + "</strong><br>" +
                             placeWindow.place.address + "<br>" + brewResult.website + "<br>" + brewResult.description + "</div>");
+                    } else {placeWindow.setContent("We're sorry, but the information about the brewery you've selected is not available at this time. We will update this listing as soon as the information becomes available to us.")
+
+                    }
                 })
 
                     google.maps.event.addListener(marker, "click", function () {
