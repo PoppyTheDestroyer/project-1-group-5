@@ -95,7 +95,7 @@
                 if (status === google.maps.places.PlacesServiceStatus.OK) {
                     for (var i = 0; i < 10; i += 1) {
                         createMarker(results[i]);
-                        
+                        console.log('HERE:'+results[i].name)
                         //useBoth(brewResult[i]);
                     }
                 };
@@ -117,19 +117,32 @@
                         },
 
                     })
-                    useBoth();
+                    //useBoth();
                     var brewTrim = placeWindow.place.name.replace(/\s/g, "+");
                     brewSearch = "http://api.brewerydb.com/v2/search?q=" + brewTrim + "&type=brewery&key=d4882cb01048df44209c9a07b0254a4a";
                     console.log("brewSearch " + brewSearch);
                     console.log("placeWindow " + placeWindow);
-                    google.maps.event.addListener(marker, "click", function () {
-                        placeWindow.setContent("<div><strong>" + placeWindow.place.name + "</strong><br>" +
+
+
+                    $.ajax({
+                    url: brewSearch,
+                    method: "GET"
+                }).done(function (response) {
+                    brewResult = response.data[0];
+                    console.log("brewResult " + brewResult.name);
+                    console.log("Response: " + response.data[0].name)
+                    console.log("Website: " + brewResult.website);
+                    placeWindow.setContent("<div><strong>" + placeWindow.place.name + "</strong><br>" +
                             placeWindow.place.address + "<br>" + brewResult.website + "<br>" + brewResult.description + "</div>");
+                })
+
+                    google.maps.event.addListener(marker, "click", function () {
+                        
                         placeWindow.open(map, this)
                     });
                     
 
-                }
+                } // createMarker
                 
             };
 
