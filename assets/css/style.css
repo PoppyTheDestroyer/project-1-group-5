@@ -4,29 +4,13 @@ Author URL: http://w3layouts.com
 License: Creative Commons Attribution 3.0 Unported
 License URL: http://creativecommons.org/licenses/by/3.0/
 --*/
-/* reset */
-html,body,div,span,applet,object,iframe,h1,h2,h3,h4,h5,h6,p,blockquote,pre,a,abbr,acronym,address,big,cite,code,del,dfn,em,img,ins,kbd,q,s,samp,small,strike,strong,sub,sup,tt,var,b,u,i,dl,dt,dd,ol,nav ul,nav li,fieldset,form,label,legend,table,caption,tbody,tfoot,thead,tr,th,td,article,aside,canvas,details,embed,figure,figcaption,footer,header,hgroup,menu,nav,output,ruby,section,summary,time,mark,audio,video{margin:0;padding:0;border:0;font-size:100%;font:inherit;vertical-align:baseline;}
-article, aside, details, figcaption, figure,footer, header, hgroup, menu, nav, section {display: block;}
-ol,ul{list-style:none;margin:0px;padding:0px;}
-blockquote,q{quotes:none;}
-blockquote:before,blockquote:after,q:before,q:after{content:'';content:none;}
-table{border-collapse:collapse;border-spacing:0;}
-/* start editing from here */
-a{text-decoration:none;}
-.txt-rt{text-align:right;}/* text align right */
-.txt-lt{text-align:left;}/* text align left */
-.txt-center{text-align:center;}/* text align center */
-.float-rt{float:right;}/* float right */
-.float-lt{float:left;}/* float left */
-.clear{clear:both;}/* clear float */
-.pos-relative{position:relative;}/* Position Relative */
-.pos-absolute{position:absolute;}/* Position Absolute */
-.vertical-base{	vertical-align:baseline;}/* vertical align baseline */
-.vertical-top{	vertical-align:top;}/* vertical align top */
-nav.vertical ul li{	display:block;}/* vertical menu */
-nav.horizontal ul li{	display: inline-block;}/* horizontal menu */
-img{max-width:100%;}
-/*end reset*/
+html {
+	height: 90%;
+	width: 90%;
+	margin: 0;
+	padding: 0;
+}
+
 body {
 	background: url(../images/2.jpg)no-repeat center top;
     background-size: cover;
@@ -39,8 +23,31 @@ body {
     text-align: center;
     font-family: 'Oswald', sans-serif;
 	position: relative;
-	color: #FFFFFF;
+	color: #FFF;
+	height: 90%;
+	width: 90%;
+	margin: 0;
+	padding: 0;
 	
+}
+
+div {
+	color: #000000;
+
+}
+
+li {
+	font-size: 12px;
+	color: #fff;
+}
+
+h3 {
+	color: #FFF;
+	padding: 20px 0px;
+}
+
+a {
+	color: #fff;
 }
 
 .main-w3layouts {
@@ -78,11 +85,10 @@ body {
 }
 
 #map {
-	margin: auto;
-	height: 300px;
-	width: 600px;
-	margin-bottom: 25px;
-	margin-top: 15px
+	height: 400px;
+	width: 100%;
+	color: #000;
+	position: fixed;
 }
 
 /*--//parallax-js--*/

@@ -10,7 +10,7 @@ $(document).ready(function() {
 	av_legality_check();
 });
 
-
+ //set cookie, if user has visited site previously and passed age verfication then stored cookie will allow user to bypass it
 av_legality_check = function() {
 	if ($.cookie('is_legal') == "yes") {
 		// legal!
@@ -22,7 +22,7 @@ av_legality_check = function() {
 		$(window).on('resize', av_positionPrompt);
 	}
 };
-
+ // html to create popup box 
 av_showmodal = function() {
 	modal_screen = $('<div id="modal_screen"></div>');
 	modal_content = $('<div id="modal_content" style="display:none"></div>');
@@ -48,15 +48,15 @@ av_showmodal = function() {
 
 	// Center the box
 	av_positionPrompt();
-
+//setCookie 
 	modal_content.find('a.av_btn').on('click', av_setCookie);
 };
 
 av_setCookie = function(e) {
 	e.preventDefault();
-
+// rel will return the relationship between the current document and the linked document
 	var is_legal = $(e.currentTarget).attr('rel');
-
+//checking cookie value
 	$.cookie('is_legal', is_legal, {
 		expires: 30,
 		path: '/'
@@ -69,7 +69,7 @@ av_setCookie = function(e) {
 		av_showRegret();
 	}
 };
-
+//fxn to get pop up to fade 
 av_closeModal = function() {
 	modal_content.fadeOut();
 	modal_screen.fadeOut();
