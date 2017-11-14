@@ -2,16 +2,18 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <title>BreweryDB</title>
+  <title>KEGS-ISTENTIAL C R I S I S</title>
   <meta name="viewport" content="initial-scale=1.0, user-scalable=no">
   <meta charset="utf-8">
   <link rel="stylesheet" type="text/css" href="assets/css/reset.css">
   <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta/css/bootstrap.min.css" integrity="sha384-/Y6pD6FV/Vv2HJnA6t+vslU6fwYXjCFtcEpHbNJ0lyAFsXTsjBbfaDjzALeQsN6M" crossorigin="anonymous">
   <link rel="stylesheet" type="text/css" href="assets/css/style.css">
+  <link rel="stylesheet" type="text/css" href="assets/css/age-verification.css">
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/jquery.cookie/1.4.1/jquery.cookie.min.js"></script>
   <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyD50WIf4p3lFBxbjnXD3F1y4RdmxhNYm-8&libraries=places">
     </script>
-    <script src="assets/javascript/map.js" type="text/javascript"></script>
+  <script src="assets/javascript/map.js" type="text/javascript"></script>
   <script src="assets/javascript/age-verification.js" type="text/javascript"></script>
 
 
@@ -23,7 +25,7 @@
         </div>
         <div class = "row">
           <div class = "col-11">
-            <h3>Breweries Near You!</h3>
+            <h3>Find Breweries Near You!</h3>
         </div>
       </div>
         </div>
@@ -48,7 +50,9 @@
               </div>
             </div>
           <div class = "col-5">
-            <p color = "#fff" id = "brewery-desc">
+            <p id = "brewery-desc">
+            </p>
+            <p id = "brewery-website">
             </p>
           </div>
 
