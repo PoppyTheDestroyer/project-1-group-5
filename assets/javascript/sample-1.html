@@ -38,7 +38,7 @@
             }
         });
         //create variables
-        var map, infoWindow, brewSearch, brewResult, brewInfo;
+        var map, infoWindow, brewSearch, brewResult, brewInfo, webBrew, descriptBrew;
         $(document).ready(function () {
             function useBoth() {
                 $.ajax({
@@ -68,7 +68,7 @@
                             lng: position.coords.longitude
                         };
                         infoWindow.setPosition(pos);
-                        infoWindow.setContent("Location found");
+                        infoWindow.setContent("You are here");
                         infoWindow.open(map);
                         map.setCenter(pos);
                         var request = {
@@ -95,6 +95,7 @@
                 if (status === google.maps.places.PlacesServiceStatus.OK) {
                     for (var i = 0; i < 10; i += 1) {
                         createMarker(results[i]);
+                        
                         //useBoth(brewResult[i]);
                     }
                 };
@@ -114,27 +115,22 @@
                             name: results[i].name,
                             address: results[i].formatted_address
                         },
-                        /*brewInfo: {
-                            website: brewResult[i].website,
-                            icon: brewResult[i].images.icon,
-                            description: brewResult[i].description,
-                            pic: brewResult[i].images.medium,
-                        }*/
+
                     })
                     useBoth();
                     var brewTrim = placeWindow.place.name.replace(/\s/g, "+");
                     brewSearch = "http://api.brewerydb.com/v2/search?q=" + brewTrim + "&type=brewery&key=d4882cb01048df44209c9a07b0254a4a";
                     console.log("brewSearch " + brewSearch);
                     console.log("placeWindow " + placeWindow);
-                    console.log("brewResult " + brewResult)
                     google.maps.event.addListener(marker, "click", function () {
                         placeWindow.setContent("<div><strong>" + placeWindow.place.name + "</strong><br>" +
                             placeWindow.place.address + "<br>" + brewResult.website + "<br>" + brewResult.description + "</div>");
                         placeWindow.open(map, this)
                     });
-
+                    
 
                 }
+                
             };
 
 
