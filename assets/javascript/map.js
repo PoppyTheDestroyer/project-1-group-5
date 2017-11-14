@@ -164,32 +164,34 @@ var queryUrlBrewery = "https://api.brewerydb.com/v2/brewery/" + bId + "?key=35ef
 };
 
 function getBeers(bId){
-  queryURLbeers = "https://api.brewerydb.com/v2/brewery/" + bId + "/beers?key=35eff59e52d0da84d5ba657eab46cc81";
-        $.ajax({
-          url: queryURLbeers,
-          method: "GET"
-        })
-                // After the data comes back from the API
-                .done(function (response) {
-                    // Storing an array of results in the results variable
-                    var results = response.data;
+    queryURLbeers = "https://api.brewerydb.com/v2/brewery/" + bId + "/beers?key=35eff59e52d0da84d5ba657eab46cc81";
+    $.ajax({
+        url: queryURLbeers,
+        method: "GET"
+    })
+    // After the data comes back from the API
+    .done(function (response) {
+        // Storing an array of results in the results variable
+        var results = response.data;
 
-                    //if there are results
-                    if (results != undefined){
-                      $("#beers-by-brewery").text("Beers by "+ breweryName);
-                    //add each beer result
-                    for (var i = 0; i < results.length; i += 1) {
-                      if (results[i].labels != undefined) {
-                        $("#beer-list").append("<div class = 'col-4'><img id = 'beer-" + i + "' src = '" + results[i].labels.medium + "'><br><p style='color:white;'>" + results[i].name + "</p></div>");
-                      } else {
-                        //add placeholder image if no image is found
-                        $("#beer-list").append("<div class = 'col-4'><img id = 'beer-" + i + "' src = 'assets/images/beer_PNG2388.png'><br><p style='color:white;'>" + results[i].name + "</p></div>");
-                      }
-                    }
-                  }
-
-                  });
-}
-
+        //if there are no results, make blank
+        if (results === undefined){
+            $("#beers-by-brewery").html();
+            $("#beer-list").html();
+            //if there are results
+        } else {
+          $("#beers-by-brewery").text("Beers by "+ breweryName);
+        //add each beer result
+        for (var i = 0; i < results.length; i += 1) {
+          if (results[i].labels != undefined) {
+            $("#beer-list").append("<div class = 'col-4'><img id = 'beer-" + i + "' src = '" + results[i].labels.medium + "'><br><p style='color:white;'>" + results[i].name + "</p></div>");
+        } else {
+            //add placeholder image if no image is found
+            $("#beer-list").append("<div class = 'col-4'><img id = 'beer-" + i + "' src = 'assets/images/beer_PNG2388.png'><br><p style='color:white;'>" + results[i].name + "</p></div>");
+        };
+     };
+   };
+});
+};
 
 
