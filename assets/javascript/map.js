@@ -4,7 +4,7 @@
             }
         });
         //create variables
-        var map, infoWindow, brewSearch, brewResult, brewInfo, moreInfo, webBrew, descriptBrew, contentString;
+        var map, infoWindow, brewSearch, brewResult, brewInfo, moreInfo, webBrew, descriptBrew, contentString, breweryName;
         $(document).ready(function () {
             function useBoth() {
                 $.ajax({
@@ -12,9 +12,6 @@
                     method: "GET"
                 }).done(function (response) {
                     brewResult = response.data[0];
-                    console.log("brewResult " + brewResult.name);
-                    console.log("Response: " + response.data[0].name)
-                    console.log("Website: " + brewResult.website);
                 })
 
             }
@@ -88,9 +85,10 @@
                     method: "GET"
                 }).done(function (response) {
                     brewResult = response.data[0];
-                    $("#brewery-name").append("<li onclick = 'getBreweryInfo('"+brewResult.id+"')'>"+brewResult.name+"</li>");
+                    console.log("alex" + brewResult.id);
+                    $("#brewery-name").append("<li onclick = \"getBreweryInfo('"+brewResult.id+"')\">"+brewResult.name+"</li>");
 
-                    moreInfo ="http://api.brewerydb.com/v2/brewery/" + brewResult.id + "?key=35eff59e52d0da84d5ba657eab46cc81";
+                    moreInfo ="https://api.brewerydb.com/v2/brewery/" + brewResult.id + "?key=35eff59e52d0da84d5ba657eab46cc81";
                     if (brewResult.status === "verified") {
                     placeWindow.setContent("<div><strong>" + placeWindow.place.name + "</strong><br>" +
                             placeWindow.place.address + "<br>" + brewResult.website + "<br>" + brewResult.description +"</div>");
@@ -114,7 +112,7 @@
                     'Error: Your browser doesn\'t support geolocation.');
                 infoWindow.open(map);
             }
-        })
+        });
 
         function storeFunction(string){
             localStorage.setItem("name",string);
@@ -125,12 +123,13 @@
 function getBreweryInfo(bId){
 
 
-var queryUrlBrewery = "http://api.brewerydb.com/v2/brewery/" + bId + "?key=35eff59e52d0da84d5ba657eab46cc81";
+var queryUrlBrewery = "https://api.brewerydb.com/v2/brewery/" + bId + "?key=35eff59e52d0da84d5ba657eab46cc81";
     $.ajax({
         url: queryUrlBrewery,
         method: "GET"
       }).done(function (response) {
         var breweryResult = response.data;
+        breweryName = breweryResult.name;
 
       
       $("#brewery-img").html("<img src='" + breweryResult.images.squareMedium + "'>");
@@ -152,7 +151,7 @@ var queryUrlBrewery = "http://api.brewerydb.com/v2/brewery/" + bId + "?key=35eff
 };
 
 function getBeers(bId){
-  queryURLbeers = "http://api.brewerydb.com/v2/brewery/" + bId + "/beers?key=35eff59e52d0da84d5ba657eab46cc81";
+  queryURLbeers = "https://api.brewerydb.com/v2/brewery/" + bId + "/beers?key=35eff59e52d0da84d5ba657eab46cc81";
         $.ajax({
           url: queryURLbeers,
           method: "GET"
