@@ -131,6 +131,8 @@
 
 //get Brewery info for page
 function getBreweryInfo(bId){
+    $("#beers-by-brewery").html("");
+    $("#beer-list").html("");
 
 //set query URL
 var queryUrlBrewery = "https://api.brewerydb.com/v2/brewery/" + bId + "?key=35eff59e52d0da84d5ba657eab46cc81";
@@ -146,7 +148,7 @@ var queryUrlBrewery = "https://api.brewerydb.com/v2/brewery/" + bId + "?key=35ef
     
       //if it's undefined, put nothing
     if (breweryResult.description === undefined){
-      $("#brewery-desc").html();
+      $("#brewery-desc").html("");
     } else {
         //add description
       $("#brewery-desc").html("<p>" + breweryResult.description +"</p>");
@@ -154,10 +156,10 @@ var queryUrlBrewery = "https://api.brewerydb.com/v2/brewery/" + bId + "?key=35ef
 
     //if it's undefined, put nothing
     if (breweryResult.website === undefined){
-      $("#brewery-website").html();
+      $("#brewery-website").html("");
     } else {
         //add website address
-      $("#brewery-website").html("<p>Website: <a href='"+breweryResult.website+"'>"+breweryResult.name + "</a></p>");
+      $("#brewery-website").html("<p style='color:white;'>Website: <a href='"+breweryResult.website+"'>"+breweryResult.name + "</a></p>");
     }  
      getBeers(bId);
   });
@@ -176,8 +178,8 @@ function getBeers(bId){
 
         //if there are no results, make blank
         if (results === undefined){
-            $("#beers-by-brewery").html();
-            $("#beer-list").html();
+            $("#beers-by-brewery").html("");
+            $("#beer-list").html("");
             //if there are results
         } else {
           $("#beers-by-brewery").text("Beers by "+ breweryName);
@@ -193,5 +195,3 @@ function getBeers(bId){
    };
 });
 };
-
-
