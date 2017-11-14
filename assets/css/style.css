@@ -23,7 +23,7 @@ body {
     text-align: center;
     font-family: 'Oswald', sans-serif;
 	position: relative;
-	color: #FFF;
+	color: #000;
 	height: 90%;
 	width: 90%;
 	margin: 0;
@@ -31,17 +31,17 @@ body {
 	
 }
 
-div {
-	color: #000000;
-
-}
+img {
+ 	max-width: 100%;
+ 	max-height: 250px;
+ }
 
 li {
 	font-size: 12px;
 	color: #fff;
 }
 
-h3 {
+h3,p, {
 	color: #FFF;
 	padding: 20px 0px;
 }
@@ -56,6 +56,10 @@ a {
     top: 0;
     left: 21%;
     width: 55%;
+}
+
+.row {
+	padding: 20px 0px;
 }
 
 #header {
@@ -87,7 +91,6 @@ a {
 #map {
 	height: 400px;
 	width: 100%;
-	color: #000;
 	position: fixed;
 }
 
