@@ -26,6 +26,10 @@ $(document).ready(function () {
   // AJAX get beers
   //gets beers at brewery
 
+//  $.get("index.html").then(function(responseData){
+  //  console.log(responseData);
+  //});
+
   //getting the brewery info
   $.ajax({
     url: queryURLrandom,
@@ -132,6 +136,8 @@ $(document).ready(function () {
 
   });
 
+
+});
 
 });
 
